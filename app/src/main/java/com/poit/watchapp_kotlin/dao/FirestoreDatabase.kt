@@ -13,15 +13,5 @@ class FirestoreDatabase {
 
     public fun getCollection(collectionName: String) : Task<QuerySnapshot> {
         return db.collection("watches").get()
-                /*
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    print("DOCUMENT: ${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                print("Error getting documents: $exception")
-            }
-        */
     }
 }

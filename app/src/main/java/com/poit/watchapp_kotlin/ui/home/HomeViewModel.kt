@@ -10,14 +10,14 @@ import com.poit.watchapp_kotlin.models.Item
 
 class HomeViewModel : ViewModel() {
 
-    private var _itemList = MutableLiveData<MutableList<String>>().apply {
-        val docs: MutableList<String> = ArrayList()
+    private var _itemList = MutableLiveData<MutableList<Item>>().apply {
+        val docs: MutableList<Item> = ArrayList()
         FirestoreDatabase()
             .getCollection("watches")
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val item : Item = document.toObject()
-                    docs.add(item.name!!)
+                    docs.add(item)
                 }
                 value = docs
             }
@@ -27,7 +27,7 @@ class HomeViewModel : ViewModel() {
             }
         value = docs
     }
-    val itemList: LiveData<MutableList<String>> = _itemList
+    val itemList: LiveData<MutableList<Item>> = _itemList
 
 
 

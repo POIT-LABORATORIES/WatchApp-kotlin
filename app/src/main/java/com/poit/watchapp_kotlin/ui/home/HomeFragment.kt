@@ -10,6 +10,7 @@ import android.widget.ListView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.poit.watchapp_kotlin.adapters.ItemsAdapter
 import com.poit.watchapp_kotlin.databinding.FragmentHomeBinding
 import com.poit.watchapp_kotlin.models.Item
 
@@ -38,7 +39,8 @@ class HomeFragment : Fragment() {
         homeViewModel.itemList.observe(viewLifecycleOwner, Observer {
             var items = it
             val activity = activity as Context
-            var arrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, items);
+            //var arrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, items);
+            var arrayAdapter = ItemsAdapter(items, activity);
             //var arrayAdapter: ArrayAdapter<Item> = ArrayAdapter<Item>(activity, android.R.layout.simple_list_item_1, items);
             listView.adapter = arrayAdapter;
         })
