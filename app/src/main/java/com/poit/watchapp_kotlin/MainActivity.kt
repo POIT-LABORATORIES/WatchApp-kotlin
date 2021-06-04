@@ -7,7 +7,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.poit.watchapp_kotlin.databinding.ActivityMainBinding
+import com.poit.watchapp_kotlin.ui.dashboard.DashboardFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,5 +31,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_map, R.id.navigation_settings))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    internal fun onOpenMap() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, DashboardFragment())
+            .commitNow()
     }
 }
